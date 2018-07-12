@@ -3,27 +3,20 @@ require_relative 'create'
 require_relative 'create_politician'
 require_relative 'create_voter'
 require_relative 'list'
+require_relative 'delete'
+require_relative 'update'
 
 include Create
 include CreatePolitician
 include CreateVoter
 include List
+include Delete
+include Update
 
 def breaks
   puts "*" * 20
 end
 
-
-
-def update
-puts "update"
-end
-
-
-def delete
-  puts "You want to delete"
-
-end
 def the_options(decision)
   case decision
   when "c" , "create"
