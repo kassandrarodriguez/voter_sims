@@ -3,40 +3,39 @@ require_relative 'create_actions'
 require_relative 'display_actions'
 require_relative 'edit_actions'
 
-def main
+class Simulation
+  include CreateActions
+  include DisplayActions
+  include EditActions
 
-include CreateActions
-include DisplayActions
-include EditActions
+  def run
+  Politician.new("Elephant1", "Republican")
+  Politician.new("Donkey1", "Democrat")
+
+  Politician.new("Elephant2", "Republican")
+  Politician.new("Donkey2", "Democrat")
+
+  Voter.new("Jessie", "Liberal")
+  Voter.new("Bob", "Conservative")
 
 
-Politician.new("Elephant1", "Republican")
-Politician.new("Donkey1", "Democrat")
+    exit = false
+    until exit
+      breaks
+      puts ""
+      puts "What would you like to do?"
+      puts "(C)reate, (L)ist, (U)pdate, or (D)elete"
+      puts "(E)xit"
+      decision = gets.chomp.downcase
+      if decision.downcase == "e" || decision.downcase == "exit"
+        exit = true
+      else
+        the_options(decision)
+      end
 
-Politician.new("Elephant2", "Republican")
-Politician.new("Donkey2", "Democrat")
-
-Voter.new("Jessie", "Liberal")
-Voter.new("Bob", "Conservative")
-
-
-  exit = false
-  until exit
-    breaks
-    puts ""
-    puts "What would you like to do?"
-    puts "(C)reate, (L)ist, (U)pdate, or (D)elete"
-    puts "(E)xit"
-    decision = gets.chomp.downcase
-    if decision.downcase == "e" || decision.downcase == "exit"
-      exit = true
-    else
-      the_options(decision)
     end
-
   end
 end
 
-
-main
+Simulation.new.run
 #EOP
