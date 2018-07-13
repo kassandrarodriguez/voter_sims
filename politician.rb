@@ -1,6 +1,7 @@
 require_relative 'voter.rb'
 
 class Politician < Voter
+  
   @@politicians= []
 
   def initialize(name, party_affiliation)
@@ -17,8 +18,12 @@ class Politician < Voter
   end
 
   def self.the_list
-    puts @@politicians
+     @@politicians
   end
+
+  def self.the_list=(arg)
+    @@politicians= arg
+ end
 
   
 end

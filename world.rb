@@ -1,58 +1,42 @@
 require_relative 'politician.rb'
-require_relative 'create'
-require_relative 'create_politician'
-require_relative 'create_voter'
-require_relative 'list'
-require_relative 'delete'
-require_relative 'update'
+require_relative 'create_actions'
+require_relative 'display_actions'
+require_relative 'edit_actions'
 
-include Create
-include CreatePolitician
-include CreateVoter
-include List
-include Delete
-include Update
+def main
 
-def breaks
-  puts "*" * 20
-end
+include CreateActions
+include DisplayActions
+include EditActions
 
-def the_options(decision)
-  case decision
-  when "c" , "create"
-    puts "What would you like to create?"
-    puts "(P)olitician or (V)oter"
-    choice = gets.chomp.downcase
-    create(choice)
-  when "l", "list"
-    list
-  when "u", "update"
-   update
-  when "d", "delete"
-    delete
-  else
-    puts "blah"
+
+Politician.new("Elephant1", "Republican")
+Politician.new("Donkey1", "Democrat")
+
+Politician.new("Elephant2", "Republican")
+Politician.new("Donkey2", "Democrat")
+
+Voter.new("Jessie", "Liberal")
+Voter.new("Bob", "Conservative")
+
+
+  exit = false
+  until exit
+    breaks
+    puts ""
+    puts "What would you like to do?"
+    puts "(C)reate, (L)ist, (U)pdate, or (D)elete"
+    puts "(E)xit"
+    decision = gets.chomp.downcase
+    if decision.downcase == "e" || decision.downcase == "exit"
+      exit = true
+    else
+      the_options(decision)
+    end
+
   end
 end
 
-
-
-def main
-exit = false
-until exit
-breaks
-puts ""
-puts "What would you like to do?"
-puts "(C)reate, (L)ist, (U)pdate, or (D)elete"
-puts "(E)xit"
-decision = gets.chomp.downcase
-if decision.downcase == "e" || decision.downcase == "exit"
-exit = true
-else
-the_options(decision)
-end
-end
-end
 
 main
 #EOP
