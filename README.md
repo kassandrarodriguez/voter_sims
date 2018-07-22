@@ -1,6 +1,6 @@
 # voter_sims
 
-## To Run
+## To Make it Run
 To run this program, type: ruby main.rb inside the terminal, while in the "voter_sims" directory
 
 
